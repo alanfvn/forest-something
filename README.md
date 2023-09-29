@@ -1,5 +1,3 @@
-A Lush Theme for Neovim.
-===
+# Forest Something 
 
-See: http://git.io/lush.nvim for more information on Lush and a helper script
-to setup your repo clone.
+My own twist of the forest theme.
