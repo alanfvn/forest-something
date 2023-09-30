@@ -265,6 +265,11 @@ local theme = lush(function(injected_functions)
     sym"@preproc"               { PreProc },  -- PreProc
     sym"@debug"                 { Debug }, -- Debug
     sym"@tag"                   { Tag }, -- Tag
+
+    -- Treesitter HTML
+    sym"@tag.attribute.html" { fg=c.aqua},
+    sym"@tag.html" {fg=c.teal},
+    sym"@string.html" {fg=c.blossom}
 }
 end)
 
