@@ -76,7 +76,7 @@ local theme = lush(function(injected_functions)
     Conceal                        { gui='underline'},  -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor                         { fg="#2c343a", bg="#ebe2cf", },  -- Character under the cursor
     -- CurSearch                   { IncSearch },  -- Highlighting a search pattern under the cursor (see 'hlsearch')
-    lCursor                     { },  -- Character under the cursor when |language-mapping| is used (see 'guicursor')
+    lCursor                        { },  -- Character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM                    { }, -- Like Cursor, but used when in IME mode |CursorIM|
     CursorColumn                   { bg="grey40", },  -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine                     { bg="#313a41", },  -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
@@ -155,7 +155,7 @@ local theme = lush(function(injected_functions)
     -- Float                       { },  --   A floating point constant: 2.3e10
 
     Identifier                     { fg=c.fg },  -- (*) Any variable name
-    Function                       { fg=c.teal},  --   Function name (also: methods for classes)
+    Function                       { fg=c.teal },  --   Function name (also: methods for classes)
 
     Statement                      { fg=c.green},  -- (*) Any statement
     -- Conditional                 { },  --   if, then, else, endif, switch, etc.
