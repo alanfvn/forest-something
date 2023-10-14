@@ -1,3 +1,3 @@
-# Forest Something 
+# Vim-Matcha
 
-My own twist of the forest theme.
+My own twist of the everforest theme [WIP]
