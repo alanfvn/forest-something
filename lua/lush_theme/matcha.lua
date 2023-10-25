@@ -51,8 +51,9 @@ local c = {
   -- reference 2: https://github.com/mcchrish/zenbones.nvim
 
   aqua = hsl("#7fbcb4"),
-  green = hsluv(105.4, 50.2, 74.5),
   teal = hsl("#83c193"),
+
+  green = hsluv(105.4, 50.2, 74.5),
   rose = hsluv(11.3, 67.5, 64.4),
 	wood = hsluv(62.2, 55.8, 77.6),
   old_wood = hsl("#b5aa92"),
@@ -62,6 +63,8 @@ local c = {
 	blossom = hsluv(339.1, 46.7, 69.8),
 	sky = hsluv(136.1, 45.8, 72.6),
 }
+
+
 
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
@@ -142,20 +145,20 @@ local theme = lush(function(injected_functions)
     Whitespace                     { NonText },  -- "nbsp", "space", "tab" and "trail" in 'listchars'
     Winseparator                   { VertSplit }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     WildMenu                       { fg=c.bg, bg=c.blossom, },  -- Current match in 'wildmenu' completion
-    WinBar                         { gui="bold", },  -- Window bar of current window
-    WinBarNC                       { WinBar },  -- Window bar of not-current windows
+    -- WinBar                      { gui="bold", },  -- Window bar of current window
+    -- WinBarNC                    { WinBar },  -- Window bar of not-current windows
 
     Comment                        { fg="#6e7b85", },  -- Any comment
 
     Constant                       { fg=c.fg, },  -- (*) Any constant
-    -- String                      { },  --   A string constant: "this is a string"
-    -- Character                   { },  --   A character constant: 'c', '\n'
-    -- Number                      { },  --   A number constant: 234, 0xff
-    -- Boolean                     { },  --   A boolean constant: TRUE, false
-    -- Float                       { },  --   A floating point constant: 2.3e10
+    String                         { fg=c.old_wood},  --   A string constant: "this is a string"
+    Character                      { fg=c.old_wood},  --   A character constant: 'c', '\n'
+    Number                         { fg=c.blossom},  --   A number constant: 234, 0xff
+    Boolean                        { fg=c.blossom },  --   A boolean constant: TRUE, false
+    Float                          { fg=c.blossom},  --   A floating point constant: 2.3e10
 
     Identifier                     { fg=c.fg },  -- (*) Any variable name
-    Function                       { fg=c.teal },  --   Function name (also: methods for classes)
+    Function                       { fg=c.aqua},  --   Function name (also: methods for classes)
 
     Statement                      { fg=c.green},  -- (*) Any statement
     -- Conditional                 { },  --   if, then, else, endif, switch, etc.
@@ -176,7 +179,7 @@ local theme = lush(function(injected_functions)
     -- Structure                   { },  --   struct, union, enum, etc.
     -- Typedef                     { },  --   A typedef
 
-    Special                        { fg=c.old_wood, },  -- (*) Any special symbol
+    Special                        { fg="#7b8e9d" },  -- (*) Any special symbol
     SpecialChar                    { Special },  --   Special character in a constant
     Tag                            { Special },  --   You can use CTRL-] on this
     Delimiter                      { fg="#7b8e9d", },  --   Character that needs attention
@@ -188,9 +191,9 @@ local theme = lush(function(injected_functions)
     Error                          { fg=c.rose },  -- Any erroneous construct
     Todo                           { fg=c.wood },  -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-    LspReferenceText               { ColorColumn },  -- Used for highlighting "text" references
-    LspReferenceRead               { ColorColumn },  -- Used for highlighting "read" references
-    LspReferenceWrite              { ColorColumn },  -- Used for highlighting "write" references
+    -- LspReferenceText            { ColorColumn },  -- Used for highlighting "text" references
+    -- LspReferenceRead            { ColorColumn },  -- Used for highlighting "read" references
+    -- LspReferenceWrite           { ColorColumn },  -- Used for highlighting "write" references
     -- LspCodeLens                 { LineNr },  -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     -- LspCodeLensSeparator        { } , -- Used to color the seperator between two or more code lens.
     -- LspSignatureActiveParameter { } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
@@ -234,14 +237,14 @@ local theme = lush(function(injected_functions)
     sym"@constant.macro"           { PreProc }, -- Define
     sym"@define"                   { PreProc }, -- Define
     sym"@macro"                    { PreProc }, -- Macro
-    sym"@string"                   { Constant }, -- String
+    sym"@string"                   { String }, -- String
     sym"@string.escape"            { }, -- SpecialChar
     sym"@string.special"           { }, -- SpecialChar
     sym"@character"                { }, -- Character
     sym"@character.special"        { }, -- SpecialChar
-    sym"@number"                   { Constant },  -- Number
-    sym"@boolean"                  { Constant }, -- Boolean
-    sym"@float"                    { Constant }, -- Float
+    sym"@number"                   { Number },  -- Number
+    sym"@boolean"                  { Boolean }, -- Boolean
+    sym"@float"                    { Float }, -- Float
     sym"@function"                 { Function },  -- Function
     sym"@function.builtin"         { Statement }, -- Special
     sym"@function.macro"           { PreProc }, -- Macro

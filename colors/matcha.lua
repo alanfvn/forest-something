@@ -12,6 +12,7 @@ end
 if lush_ok then
   lush(require('lush_theme.matcha'))
 else
+  prep_scheme()
   for group, attrs in pairs(palette) do
     vim.api.nvim_set_hl(0, group, attrs)
   end
