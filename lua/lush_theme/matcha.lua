@@ -44,28 +44,31 @@
 
 local lush = require('lush')
 local hsl = lush.hsl
-local hsluv = lush.hsluv
+-- local hsluv = lush.hsluv
 
 local c = {
   -- reference 1: https://github.com/sainnhe/everforest/blob/master/palette.md
   -- reference 2: https://github.com/mcchrish/zenbones.nvim
+  bg = hsl("#2C343A"),
+  fg = hsl("#E7DCC4"),
 
-  aqua = hsl("#7fbcb4"),
+  green = hsl("#A9C181"),
+  aqua = hsl("#7FBCB4"),
   teal = hsl("#83c193"),
+  rose = hsl("#E67C7F"),
+  wood = hsl("#DDBD7F"),
+  old_wood = hsl("#B5AA92"),
+  blossom = hsl("#D69AB7"),
 
-  green = hsluv(105.4, 50.2, 74.5),
-  rose = hsluv(11.3, 67.5, 64.4),
-	wood = hsluv(62.2, 55.8, 77.6),
-  old_wood = hsl("#b5aa92"),
-	bg = hsluv(232.6, 27, 20.7),
-	fg = hsluv(67.1, 26.4, 88),
-	water = hsluv(179.5, 51, 71.8),
-	blossom = hsluv(339.1, 46.7, 69.8),
-	sky = hsluv(136.1, 45.8, 72.6),
+  -- green = hsluv(105.4, 50.2, 74.5),
+  -- rose = hsluv(11.3, 67.5, 64.4),
+	-- wood = hsluv(62.2, 55.8, 77.6),
+	-- bg = hsluv(232.6, 27, 20.7),
+	-- fg = hsluv(67.1, 26.4, 88),
+	-- water = hsluv(179.5, 51, 71.8),
+	-- blossom = hsluv(339.1, 46.7, 69.8),
+	-- sky = hsluv(136.1, 45.8, 72.6),
 }
-
-
-
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
