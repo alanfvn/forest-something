@@ -1,3 +1,5 @@
+local palette = require('palette.colors')
+
 return {
   normal = {
     a = {bg = palette.statusline1[1], fg = palette.bg0[1] },

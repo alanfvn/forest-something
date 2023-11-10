@@ -1,6 +1,6 @@
 package.loaded['lush_theme.matcha'] = nil
 local lush_ok, lush = pcall(require, 'lush')
-local palette = require('palette.colors')
+local highlights = require('palette.highlights')
 
 local prep_scheme = function ()
   vim.opt.background = 'dark'
@@ -13,7 +13,7 @@ if lush_ok then
   lush(require('lush_theme.matcha'))
 else
   prep_scheme()
-  for group, attrs in pairs(palette) do
+  for group, attrs in pairs(highlights) do
     vim.api.nvim_set_hl(0, group, attrs)
   end
 end

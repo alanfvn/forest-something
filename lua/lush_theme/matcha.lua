@@ -41,34 +41,30 @@
 --  or
 --
 --  `:lua require('lush').ify()`
-
 local lush = require('lush')
+local palette = require('palette.colors')
+local hsluv = lush.hsluv
 local hsl = lush.hsl
--- local hsluv = lush.hsluv
+
 
 local c = {
   -- reference 1: https://github.com/sainnhe/everforest/blob/master/palette.md
   -- reference 2: https://github.com/mcchrish/zenbones.nvim
-  bg = hsl("#2C343A"),
-  fg = hsl("#E7DCC4"),
 
-  green = hsl("#A9C181"),
-  aqua = hsl("#7FBCB4"),
+  aqua = hsl("#7fbcb4"),
   teal = hsl("#83c193"),
-  rose = hsl("#E67C7F"),
-  wood = hsl("#DDBD7F"),
-  old_wood = hsl("#B5AA92"),
-  blossom = hsl("#D69AB7"),
 
-  -- green = hsluv(105.4, 50.2, 74.5),
-  -- rose = hsluv(11.3, 67.5, 64.4),
-	-- wood = hsluv(62.2, 55.8, 77.6),
-	-- bg = hsluv(232.6, 27, 20.7),
-	-- fg = hsluv(67.1, 26.4, 88),
-	-- water = hsluv(179.5, 51, 71.8),
-	-- blossom = hsluv(339.1, 46.7, 69.8),
-	-- sky = hsluv(136.1, 45.8, 72.6),
+  green = hsluv(105.4, 50.2, 74.5),
+  rose = hsluv(11.3, 67.5, 64.4),
+	wood = hsluv(62.2, 55.8, 77.6),
+  old_wood = hsl("#b5aa92"),
+	bg = hsluv(232.6, 27, 20.7),
+	fg = hsluv(67.1, 26.4, 88),
+	water = hsluv(179.5, 51, 71.8),
+	blossom = hsluv(339.1, 46.7, 69.8),
+	sky = hsluv(136.1, 45.8, 72.6),
 }
+
 
 -- LSP/Linters mistakenly show `undefined global` errors in the spec, they may
 -- support an annotation like the following. Consult your server documentation.
@@ -79,7 +75,7 @@ local theme = lush(function(injected_functions)
 
   return {
     ColorColumn                    { bg="#685a41", },  -- Columns set with 'colorcolumn'
-    Conceal                        { gui='underline'},  -- Placeholder characters substituted for concealed text (see 'conceallevel')
+    -- Conceal                        { gui='underline'},  -- Placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor                         { fg="#2c343a", bg="#ebe2cf", },  -- Character under the cursor
     -- CurSearch                   { IncSearch },  -- Highlighting a search pattern under the cursor (see 'hlsearch')
     lCursor                        { },  -- Character under the cursor when |language-mapping| is used (see 'guicursor')
@@ -96,7 +92,7 @@ local theme = lush(function(injected_functions)
     TermCursorNC                   { lCursor },  -- Cursor in an unfocused terminal
     ErrorMsg                       { fg=c.rose },  -- Error messages on the command line
     VertSplit                      { fg="#667783", },  -- Column separating vertically split windows
-    Folded                         { fg="#9cb4c6", bg="#424d55", },  -- Line used for closed folds
+    Folded                         { fg="#6e7b85", },  -- Line used for closed folds
     FoldColumn                     { Folded },  -- 'foldcolumn'
     SignColumn                     { },  -- Column where |signs| are displayed
     IncSearch                      { fg=c.bg, bg=c.blossom},  -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
@@ -119,7 +115,7 @@ local theme = lush(function(injected_functions)
     -- FloatTitle                  { },  -- Title of floating windows.
     -- NormalNC                    { }, -- normal text in non-current windows
     Pmenu                          { bg="#3b464e", },  -- Popup menu: Normal item.
-    PmenuSel                       { bg="#4e5b65", },  -- Popup menu: Selected item.
+    PmenuSel                       { fg=c.green, bg="#4e5b65", },  -- Popup menu: Selected item.
     PmenuKind                      { Pmenu },  -- Popup menu: Normal item "kind"
     PmenuKindSel                   { PmenuSel },  -- Popup menu: Selected item "kind"
     PmenuExtra                     { Pmenu },  -- Popup menu: Normal item "extra text"
@@ -139,7 +135,7 @@ local theme = lush(function(injected_functions)
     StatusLine                     { fg="#e7dcc4", bg="#3e4850", },  -- Status line of current window
     StatusLineNC                   { fg="#ede5d4", bg="#353f46", },  -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine                        { bg=c.bg, fg=c.fg},  -- Tab pages line, not active tab page label
-    TabLineFill                    { bg=c.bg},  -- Tab pages line, where there are no labels
+    TabLineFill                    { bg=c.bg },  -- Tab pages line, where there are no labels
     TabLineSel                     { bg=c.green, fg=c.bg, gui='italic'},  -- Tab pages line, active tab page label
     Title                          { fg=c.rose },  -- Titles for output from ":set all", ":autocmd" etc.
     Visual                         { bg="#615b51", },  -- Visual mode selection
@@ -185,7 +181,7 @@ local theme = lush(function(injected_functions)
     Special                        { fg="#7b8e9d" },  -- (*) Any special symbol
     SpecialChar                    { Special },  --   Special character in a constant
     Tag                            { Special },  --   You can use CTRL-] on this
-    Delimiter                      { fg="#7b8e9d", },  --   Character that needs attention
+    Delimiter                      { Special },  --   Character that needs attention
     SpecialComment                 { Comment },  --   Special things inside a comment (e.g. '\n')
     Debug                          { Special },  --   Debugging statements
 
@@ -276,7 +272,12 @@ local theme = lush(function(injected_functions)
     -- Treesitter HTML
     sym"@tag.attribute.html"       { fg=c.aqua},
     sym"@tag.html"                 { fg=c.teal},
-    sym"@string.html"              { fg=c.blossom}
+    sym"@string.html"              { fg=c.blossom},
+
+
+    -- Telescope
+    -- TelescopeNormal {},
+    TelescopeBorder { FloatBorder }
 }
 end)
 
